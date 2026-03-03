@@ -1,0 +1,48 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    font-family: monospace;
+}
+
+.card {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+}
+
+a {
+    color: #4ea8de;
+}
+
+.terminal {
+    padding: 40px;
+    font-family: monospace;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: #00ff88;
+    border: none;
+}

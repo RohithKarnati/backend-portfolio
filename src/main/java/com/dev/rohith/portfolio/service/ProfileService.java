@@ -1,50 +1,66 @@
 package com.dev.rohith.portfolio.service;
 
-import org.springframework.http.ResponseEntity;
+import com.dev.rohith.portfolio.dto.GithubUser;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
+import java.lang.management.ManagementFactory;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
 public class ProfileService {
 
+    private final GithubService githubService;
+
+    public ProfileService(GithubService githubService) {
+        this.githubService = githubService;
+    }
+
     public Map<String, Object> getProfile() {
+        GithubUser github = githubService.fetchGithubProfile("RohithKarnati");
 
-        Map<String, Object> profile = new HashMap<>();
-        profile.put("name", "Rohith Kumar");
-        profile.put("role", "Backend Engineer");
-        profile.put("stack", "Java, Spring Boot, MSSQL");
-        profile.put("focus", "Performance & Scalability");
+        Map<String, Object> response = new HashMap<>();
 
-        return profile;
+        response.put("name", "Rohith Kumar");
+        response.put("role", "Backend Engineer");
+        response.put("focus", "Performance & Scalability");
+
+        response.put("github", github);
+        response.put("generatedAt", Instant.now());
+
+        return response;
     }
 
     public String handleCommand(String command) {
 
-        return switch (command.toLowerCase()) {
-            case "help" ->
-                    "Available commands: help, whoami, skills, exit";
-            case "whoami" ->
-                    "Rohith Kumar - Backend Engineer";
-            case "skills" ->
-                    "Java | Spring Boot | MSSQL | MongoDB | Concurrency";
-            case "exit" ->
-                    "Exiting developer mode...";
-            default ->
-                    "Unknown command. Type 'help'";
-        };
-    }
+        switch (command.toLowerCase()) {
 
-    public String getGHApiDetaila(String username) {
-
-        RestTemplate restTemplate = new RestTemplate();
-        String url = "https://api.github.com/users/"+username;
-
-        ResponseEntity<String> forEntity = restTemplate.getForEntity(url, String.class);
-
-
-        return forEntity.getBody();
+            case "help":
+                return "Available: help, whoami, skills, github, metrics, exit";
+            case "whoami":
+                return "Rohith Kumar - Backend Engineer";
+            case "skills":
+                return "Java | Spring Boot | MSSQL | MongoDB | Concurrency";
+            case "github":
+                GithubUser github = githubService.fetchGithubProfile("RohithKarnati");
+                return """
+                        GitHub Profile:
+                        Repos: %d
+                        Followers: %d
+                        Profile: %s
+                        """.formatted(
+                        github.getPublic_repos(),
+                        github.getFollowers(),
+                        github.getHtml_url()
+                );
+            case "metrics":
+                long uptime = ManagementFactory.getRuntimeMXBean().getUptime();
+                return "JVM Uptime (ms): " + uptime;
+            case "exit":
+                return "Exiting developer mode...";
+            default:
+                return "Unknown command. Type 'help'";
+        }
     }
 }

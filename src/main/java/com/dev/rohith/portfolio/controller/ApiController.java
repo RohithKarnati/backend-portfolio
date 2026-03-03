@@ -25,8 +25,4 @@ public class ApiController {
         return profileService.handleCommand(command);
     }
 
-    @GetMapping("/github")
-    public String gitApi(String username) {
-        return profileService.getGHApiDetaila(username);
-    }
 }

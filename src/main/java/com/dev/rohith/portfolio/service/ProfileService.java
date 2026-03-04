@@ -59,6 +59,8 @@ public class ProfileService {
                 return "JVM Uptime (ms): " + uptime;
             case "exit":
                 return "Exiting developer mode...";
+            case "":
+                return "";
             default:
                 return "Unknown command. Type 'help'";
         }

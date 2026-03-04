@@ -1,224 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org">
 
+<head>
     <title>Rohith Kumar | Backend Engineer</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="/style.css">
-
+    <link rel="stylesheet" th:href="@{/dashboard.css}">
 </head>
 
-<body class="text-gray-200">
+<body class="dashboard-bg text-gray-200">
 
-<div id="cursor-glow"></div>
+<div id="mouseGlow" class="mouse-glow"></div>
 
-<!-- NAVBAR -->
+<div class="container-main">
 
-<nav class="nav-container">
+    <!-- NAVBAR -->
 
-    <div class="logo">Rohith Kumar</div>
+    <nav class="navbar">
+        <div class="logo">Rohith Kumar</div>
 
-    <div class="nav-links">
-        <a href="#">Work</a>
-        <a href="#">Projects</a>
-        <a href="#">Tech Stack</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-    </div>
+        <div class="nav-links">
+            <a href="#">Work</a>
+            <a href="#">Projects</a>
+            <a href="#">Tech Stack</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
 
-</nav>
 
+    <!-- HERO SECTION -->
 
-<!-- HERO SECTION -->
+    <section class="hero">
 
-<section class="hero">
+        <!-- LEFT SIDE -->
 
-    <div class="hero-left">
+        <div class="hero-left">
 
-        <h1 class="hero-title">
-            Backend <br> Engineer<span class="dot">.</span>
-        </h1>
+            <div class="status-badge">
+                ● AVAILABLE FOR COLLABORATION
+            </div>
 
-        <p class="hero-description">
+            <h1 class="hero-title">
+                <span class="hero-line1">Backend</span><br>
+                <span class="hero-line2">Engineer.</span>
+            </h1>
 
-            Backend Engineer specializing in
-            <span class="highlight">Java, Spring Boot, Microservices, and DevOps automation</span>.
+            <p class="hero-description">
+                Backend Engineer specializing in
+                <span class="highlight">Java, Spring Boot, Microservices</span>
+                and scalable distributed systems.
+            </p>
 
-            Experienced in designing scalable systems, Linux deployments,
-            and CI/CD pipelines using Jenkins.
-
-        </p>
-
-        <div class="hero-buttons">
-
-            <button class="btn-primary">
-                View Projects
-            </button>
-
-            <button class="btn-secondary">
-                Contact Me
-            </button>
+            <div class="hero-buttons">
+                <button class="btn-primary">View Projects</button>
+                <button class="btn-secondary">Contact Me</button>
+            </div>
 
         </div>
 
-    </div>
 
+        <!-- RIGHT SIDE -->
 
-    <div class="hero-right">
+        <div class="hero-right">
 
-        <div class="availability-card">
+            <div class="collab-card">
 
-            <h3>AVAILABLE FOR COLLABORATION</h3>
+                <h3>AVAILABLE</h3>
 
-            <ul>
-                <li>Backend Development</li>
-                <li>Microservice Architecture</li>
-                <li>DevOps Automation</li>
-                <li>System Design</li>
-            </ul>
+                <p class="open-text">OPEN TO WORK</p>
 
-            <button class="cv-button">
-                Download CV
-            </button>
+                <h2 class="hire-text">HIRE ME.</h2>
+
+                <ul>
+                    <li>Full-time roles</li>
+                    <li>Backend Systems</li>
+                    <li>Architecture Design</li>
+                </ul>
+
+                <button class="download-btn">
+                    Download CV
+                </button>
+
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- TECH STACK -->
 
-<section class="section">
+    <!-- TECH STACK -->
 
-    <h2 class="section-title">Tech Stack</h2>
+    <section class="tech-stack">
 
-    <div class="tech-grid">
+        <h2 class="section-title">Tech Stack</h2>
 
-        <div class="tech-card">
-            <h3>Backend</h3>
-            <p>Java</p>
-            <p>Spring Boot</p>
-            <p>REST APIs</p>
-            <p>Microservices</p>
+        <div class="tech-grid">
+
+            <div class="tech-card">
+                <h3>Backend</h3>
+                <p>Java • Spring Boot • REST APIs</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>DevOps</h3>
+                <p>Docker • CI/CD • Linux</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Infrastructure</h3>
+                <p>Cloud Deployments</p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Database</h3>
+                <p>MongoDB • MSSQL</p>
+            </div>
+
         </div>
 
-        <div class="tech-card">
-            <h3>DevOps</h3>
-            <p>Jenkins</p>
-            <p>Docker</p>
-            <p>CI/CD Pipelines</p>
-        </div>
-
-        <div class="tech-card">
-            <h3>Infrastructure</h3>
-            <p>Linux</p>
-            <p>Nginx</p>
-            <p>Cloud Deployment</p>
-        </div>
-
-        <div class="tech-card">
-            <h3>Database</h3>
-            <p>MySQL</p>
-            <p>PostgreSQL</p>
-            <p>Redis</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- PROJECTS -->
-
-<section class="section">
-
-    <h2 class="section-title">Projects</h2>
-
-    <div class="projects-grid">
-
-        <div class="project-card">
-            <h3>Microservice Architecture System</h3>
-            <p>Designed scalable microservices with resilient communication.</p>
-            <a href="#">GitHub →</a>
-        </div>
-
-        <div class="project-card">
-            <h3>CI/CD Pipeline Automation</h3>
-            <p>Automated build and deployment pipelines using Jenkins.</p>
-            <a href="#">GitHub →</a>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- STATS -->
-
-<section class="section">
-
-    <h2 class="section-title">Stats</h2>
-
-    <div class="stats-grid">
-
-        <div class="stat-card">
-            <h3>5+</h3>
-            <p>Years Experience</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>15+</h3>
-            <p>Backend Projects</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>10+</h3>
-            <p>Production Deployments</p>
-        </div>
-
-        <div class="stat-card">
-            <h3>100M+</h3>
-            <p>API Requests Handled</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- SOCIAL LINKS -->
-
-<div class="social-sidebar">
-
-    <a href="#">GitHub</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Email</a>
-    <a href="#">Resume</a>
+    </section>
 
 </div>
 
 
-
 <script>
 
-    const glow = document.getElementById("cursor-glow");
+    const glow = document.getElementById("mouseGlow");
 
     document.addEventListener("mousemove", (e) => {
-
         glow.style.left = e.clientX + "px";
         glow.style.top = e.clientY + "px";
-
     });
 
 </script>
-
 
 </body>
 </html>

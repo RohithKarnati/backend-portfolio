@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class GithubUser {
 
     private String login;
+    private String avatar_url;
     private int public_repos;
     private int followers;
     private int following;

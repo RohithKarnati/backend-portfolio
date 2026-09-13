@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Developer Mode</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<div class="terminal">
-    <div id="output"></div>
-    <input type="text" id="commandInput" placeholder="Type command..." autofocus/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Mode | Rohith Kumar</title>
+    <meta name="description" content="A Linux-inspired virtual terminal exploring Rohith Kumar's backend engineering portfolio.">
+
+    <link rel="stylesheet" th:href="@{/developer.css}">
+</head>
+
+<body class="terminal-bg">
+
+<div class="terminal-shell">
+    <div class="terminal-titlebar">
+        <div class="titlebar-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="titlebar-label">rohith@portfolio</div>
+        <div class="titlebar-badge">DEV</div>
+    </div>
+
+    <div id="terminalOutput" class="terminal-output" role="log" aria-live="polite"></div>
+
+    <div class="terminal-input-row">
+        <span id="prompt" class="terminal-prompt">rohith@portfolio:~$</span>
+        <input id="terminalInput" class="terminal-input" type="text" autocomplete="off"
+               autocapitalize="off" spellcheck="false" aria-label="Terminal input" autofocus>
+    </div>
 </div>
 
-<script>
-    const input = document.getElementById("commandInput");
-    const output = document.getElementById("output");
+<a class="back-to-dashboard" th:href="@{/}">&larr; Back to dashboard</a>
 
-    input.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") {
-
-            const command = input.value;
-            output.innerHTML += "<div>> " + command + "</div>";
-
-            fetch("/api/dev?command=" + command)
-                .then(response => response.text())
-                .then(data => {
-                    output.innerHTML += "<div>" + data + "</div>";
-                });
-
-            input.value = "";
-        }
-    });
-</script>
+<script th:src="@{/js/developer.js}"></script>
 
 </body>
 </html>

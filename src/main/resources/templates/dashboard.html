@@ -1,139 +1,378 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohith Kumar | Backend Engineer</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description"
+          content="Rohith Kumar — Backend Engineer specializing in Java, Spring Boot, Microservices and DevOps automation.">
 
     <link rel="stylesheet" th:href="@{/dashboard.css}">
 </head>
 
-<body class="dashboard-bg text-gray-200">
+<body class="dashboard-bg">
 
-<div id="mouseGlow" class="mouse-glow"></div>
+<div id="mouseGlow" class="mouse-glow" aria-hidden="true"></div>
 
-<div class="container-main">
+<!-- NAVIGATION -->
+<header class="site-nav">
+    <div class="nav-inner">
+        <a class="nav-logo" href="#top" th:text="${name}">Rohith Kumar</a>
 
-    <!-- NAVBAR -->
+        <button id="navToggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
 
-    <nav class="navbar">
-        <div class="logo">Rohith Kumar</div>
+        <nav id="navLinks" class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
+            <a href="#tech-stack">Tech Stack</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <a class="nav-dev-link" th:href="@{/developer}">Developer Mode</a>
+        </nav>
+    </div>
+</header>
 
-        <div class="nav-links">
-            <a href="#">Work</a>
-            <a href="#">Projects</a>
-            <a href="#">Tech Stack</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
+<main class="container-main" id="top">
 
-
-    <!-- HERO SECTION -->
-
+    <!-- HERO -->
     <section class="hero">
-
-        <!-- LEFT SIDE -->
-
         <div class="hero-left">
-
-            <div class="status-badge">
-                ● AVAILABLE FOR COLLABORATION
-            </div>
+            <div class="hero-badge"><span class="badge-dot"></span> AVAILABLE FOR COLLABORATION</div>
 
             <h1 class="hero-title">
-                <span class="hero-line1">Backend</span><br>
-                <span class="hero-line2">Engineer.</span>
+                <span class="hero-title-line">Backend</span>
+                <span class="hero-title-line">Engineer<span class="accent-dot">.</span></span>
             </h1>
 
             <p class="hero-description">
-                Backend Engineer specializing in
-                <span class="highlight">Java, Spring Boot, Microservices</span>
-                and scalable distributed systems.
+                Backend Engineer specializing in <span class="highlight">Java, Spring Boot, Microservices</span>
+                and DevOps automation. I enjoy solving complex engineering problems and building reliable
+                systems that perform at scale.
             </p>
 
-            <div class="hero-buttons">
-                <button class="btn-primary">View Projects</button>
-                <button class="btn-secondary">Contact Me</button>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
             </div>
-
         </div>
-
-
-        <!-- RIGHT SIDE -->
 
         <div class="hero-right">
-
             <div class="collab-card">
-
-                <h3>Collab</h3>
-
-                <p class="open-text">OPEN TO WORK</p>
-
-                <ul>
-                    <li>Full-time roles</li>
-                    <li>Backend Systems</li>
-                    <li>Architecture Design</li>
+                <div class="collab-card-eyebrow">OPEN TO WORK</div>
+                <ul class="collab-list">
+                    <li>Backend Development</li>
+                    <li>Microservice Architecture</li>
+                    <li>System Design</li>
+                    <li>DevOps &amp; CI/CD</li>
                 </ul>
-
-                <button class="download-btn">
-                    Download CV
-                </button>
-
+                <a href="/resume.pdf" class="btn btn-block" download>Download Resume</a>
             </div>
-
         </div>
-
     </section>
 
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <span class="section-eyebrow">~/about</span>
+            <h2 class="section-title">About</h2>
+        </div>
 
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I started out learning to code through Scaler Academy with the goal of becoming a
+                    frontend engineer — I picked up Java early on partly because I mistook it for being
+                    closely related to JavaScript. While working through Java and data structures &amp;
+                    algorithms, I found I genuinely enjoyed the problem solving and mathematical thinking
+                    involved, and that pulled me steadily toward the backend.
+                </p>
+                <p>
+                    Today my focus is backend systems: APIs, performance, scalability and the
+                    infrastructure that keeps them running — Linux, deployment pipelines, and the kind
+                    of production debugging that teaches you how systems actually behave under load.
+                </p>
+                <p>
+                    I hold a B.E. in Electronics &amp; Communication Engineering and I'm currently a
+                    Senior Software Engineer working on Morgan Stanley's Datalink platform — a
+                    microservices data-abstraction layer serving 500+ downstream users with sub-150ms SLAs.
+                </p>
+            </div>
+
+            <ul class="focus-tags">
+                <li class="tag">Backend Systems</li>
+                <li class="tag">Performance</li>
+                <li class="tag">Scalability</li>
+                <li class="tag">APIs</li>
+                <li class="tag">Distributed Systems</li>
+                <li class="tag">Linux</li>
+                <li class="tag">Infrastructure</li>
+                <li class="tag">Problem Solving</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE / DEPLOYMENT HISTORY -->
+    <section class="section" id="work">
+        <div class="section-header">
+            <span class="section-eyebrow">systemctl status --history</span>
+            <h2 class="section-title">Deployment History</h2>
+            <p class="section-subtitle">Professional experience.</p>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-entry" th:each="job : ${experience}">
+                <div class="entry-status"
+                     th:classappend="${job.status == 'PRODUCTION'} ? 'status-production' : (${job.status == 'DRAFT'} ? 'status-draft' : 'status-archived')">
+                    [<span th:text="${job.status}">STATUS</span>]
+                </div>
+
+                <div class="entry-body">
+                    <div class="entry-head">
+                        <div>
+                            <h3 class="entry-role" th:text="${job.role}">Role</h3>
+                            <div class="entry-company" th:text="${job.company}">Company</div>
+                        </div>
+                        <div class="entry-duration" th:text="${job.duration}">Duration</div>
+                    </div>
+
+                    <ul class="entry-list">
+                        <li th:each="point : ${job.highlights}" th:text="${point}">Highlight</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ENGINEERING HIGHLIGHTS -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-eyebrow">capabilities</span>
+            <h2 class="section-title">Engineering Highlights</h2>
+            <p class="section-subtitle">The kind of problems I like solving.</p>
+        </div>
+
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <h3>High Concurrency</h3>
+                <p>Designed microservices sustaining 1,500+ RPS with sub-150ms SLAs across 500+ downstream clients.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Performance Optimization</h3>
+                <p>Replaced a blocking REST call with a streaming service, lifting throughput by 300%+.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>API Design</h3>
+                <p>Built REST APIs for exact-match, cross-reference and criteria-based queries across four database engines.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Microservices</h3>
+                <p>Designed a multi-service architecture — auth, data, bulk, gateway — secured with OAuth2/OIDC and JWT.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Production Debugging</h3>
+                <p>Root-caused load-testing bottlenecks and eliminated them before they reached production.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>CI/CD</h3>
+                <p>Owned Docker builds and Jenkins pipelines behind 20+ zero-rollback production releases.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>Linux Deployment</h3>
+                <p>Operated 200+ production Linux hosts, handling capacity planning and performance tuning.</p>
+            </div>
+            <div class="highlight-card">
+                <h3>System Design</h3>
+                <p>Redesigned a costly cloud-routing architecture, cutting redundant infrastructure while keeping it secure.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- TECH STACK -->
-
-    <section class="tech-stack">
-
-        <h2 class="section-title">Tech Stack</h2>
-
-        <div class="tech-grid">
-
-            <div class="tech-card">
-                <h3>Backend</h3>
-                <p>Java • Spring Boot • REST APIs</p>
-            </div>
-
-            <div class="tech-card">
-                <h3>DevOps</h3>
-                <p>Docker • CI/CD • Linux</p>
-            </div>
-
-            <div class="tech-card">
-                <h3>Infrastructure</h3>
-                <p>Cloud Deployments</p>
-            </div>
-
-            <div class="tech-card">
-                <h3>Database</h3>
-                <p>MongoDB • MSSQL</p>
-            </div>
-
+    <section class="section" id="tech-stack">
+        <div class="section-header">
+            <span class="section-eyebrow">SELECT * FROM skills;</span>
+            <h2 class="section-title">Tech Stack</h2>
         </div>
 
+        <div class="stack-grid">
+            <div class="stack-card" th:each="category : ${techStack}">
+                <h3 th:text="${category.name}">Category</h3>
+                <div class="stack-pills">
+                    <span class="pill" th:each="item : ${category.items}" th:text="${item}">Item</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-block">
+            <span class="cert-label">Certifications</span>
+            <div class="cert-list">
+                <a class="pill pill-link" th:each="cert : ${certifications}" th:href="${cert.url}"
+                   th:text="${cert.name}" target="_blank" rel="noopener noreferrer">Certification</a>
+            </div>
+        </div>
     </section>
 
-</div>
+    <!-- GITHUB ACTIVITY -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-eyebrow">github</span>
+            <h2 class="section-title">GitHub Activity</h2>
+        </div>
 
+        <div th:if="${github != null}" class="github-card">
+            <div class="github-profile">
+                <img th:if="${github.avatar_url}" th:src="${github.avatar_url}"
+                     th:alt="'GitHub avatar for ' + ${github.login}" class="github-avatar">
+                <div>
+                    <div class="github-username" th:text="'@' + ${github.login}">@username</div>
+                    <a class="github-link" th:href="${github.html_url}" target="_blank" rel="noopener noreferrer">
+                        View Profile ↗
+                    </a>
+                </div>
+            </div>
 
-<script>
+            <div class="github-stats">
+                <div class="stat-tile">
+                    <div class="stat-value" th:text="${github.public_repos}">0</div>
+                    <div class="stat-label">Public Repos</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="stat-value" th:text="${github.followers}">0</div>
+                    <div class="stat-label">Followers</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="stat-value" th:text="${github.following}">0</div>
+                    <div class="stat-label">Following</div>
+                </div>
+                <div class="stat-tile" th:if="${github.created_at}">
+                    <div class="stat-value" th:text="${#strings.substring(github.created_at, 0, 4)}">0000</div>
+                    <div class="stat-label">Member Since</div>
+                </div>
+            </div>
+        </div>
 
-    const glow = document.getElementById("mouseGlow");
+        <div th:if="${github == null}" class="github-card github-card-unavailable">
+            <p>GitHub data unavailable</p>
+        </div>
+    </section>
 
-    document.addEventListener("mousemove", (e) => {
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
-    });
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+        <div class="section-header">
+            <span class="section-eyebrow">projects</span>
+            <h2 class="section-title">Projects</h2>
+        </div>
 
-</script>
+        <div class="projects-grid">
+            <article class="project-card" th:each="project : ${projects}"
+                      th:classappend="${project.placeholder} ? 'is-placeholder' : ''">
+                <div class="project-head">
+                    <h3 class="project-name" th:text="${project.name}">Project</h3>
+                    <span th:if="${project.placeholder}" class="project-badge">PLACEHOLDER</span>
+                </div>
+
+                <p class="project-desc" th:text="${project.description}">Description</p>
+
+                <div class="project-meta">
+                    <div>
+                        <span class="project-meta-label">Problem</span>
+                        <p th:text="${project.problem}">Problem</p>
+                    </div>
+                    <div>
+                        <span class="project-meta-label">Approach</span>
+                        <p th:text="${project.approach}">Approach</p>
+                    </div>
+                </div>
+
+                <div class="stack-pills">
+                    <span class="pill" th:each="tech : ${project.techStack}" th:text="${tech}">Tech</span>
+                </div>
+
+                <a th:if="${!project.placeholder}" class="project-link" th:href="${project.githubUrl}"
+                   target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+                <span th:if="${project.placeholder}" class="project-link project-link-disabled">Repository link coming soon</span>
+            </article>
+        </div>
+    </section>
+
+    <!-- INTERESTS -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-eyebrow">interests</span>
+            <h2 class="section-title">Interests</h2>
+        </div>
+
+        <div class="interests-row">
+            <span class="interest-chip">Linux</span>
+            <span class="interest-chip">Backend Architecture</span>
+            <span class="interest-chip">Problem Solving</span>
+            <span class="interest-chip">Mathematics</span>
+            <span class="interest-chip">System Performance</span>
+            <span class="interest-chip">Query Optimization</span>
+            <span class="interest-chip">Learning New Technologies</span>
+        </div>
+
+        <div class="achievements">
+            <span class="achievements-label">Achievements</span>
+            <ul>
+                <li>Vice-President, Mathematics Club — Sathyabama Institute of Science and Technology</li>
+                <li>CodeVita 2020 (Season 9) — All India Rank 1520</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PERSONAL INFO / CONTACT -->
+    <section class="section" id="contact">
+        <div class="section-header">
+            <span class="section-eyebrow">contact</span>
+            <h2 class="section-title">Let's Talk</h2>
+        </div>
+
+        <div class="contact-grid">
+            <dl class="info-card">
+                <div><dt>Location</dt><dd th:text="${location}">Location</dd></div>
+                <div><dt>Role</dt><dd th:text="${role}">Role</dd></div>
+                <div><dt>Primary Stack</dt><dd>Java / Spring Boot</dd></div>
+                <div><dt>Availability</dt><dd>Open to opportunities</dd></div>
+            </dl>
+
+            <div class="contact-actions">
+                <a class="contact-btn" href="mailto:rohithkumar0902@gmail.com">Email</a>
+                <a class="contact-btn" th:href="${github != null} ? ${github.html_url} : 'https://github.com/RohithKarnati'"
+                   target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="contact-btn" href="https://www.linkedin.com/in/rohithkarnati"
+                   target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="contact-btn" href="/resume.pdf" download>Resume</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-name" th:text="${name}">Rohith Kumar</div>
+            <div class="footer-role" th:text="${role}">Backend Engineer</div>
+        </div>
+
+        <div class="footer-links">
+            <a th:href="${github != null} ? ${github.html_url} : 'https://github.com/RohithKarnati'"
+               target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/rohithkarnati" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:rohithkumar0902@gmail.com">Email</a>
+            <a href="/resume.pdf" download>Resume</a>
+        </div>
+
+        <a class="footer-dev-link" th:href="@{/developer}">Developer Mode →</a>
+    </div>
+</footer>
+
+<script th:src="@{/js/dashboard.js}"></script>
 
 </body>
 </html>

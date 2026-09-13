@@ -20,9 +20,4 @@ public class ApiController {
         return profileService.getProfile();
     }
 
-    @GetMapping("/dev")
-    public String handleCommand(@RequestParam String command) {
-        return profileService.handleCommand(command);
-    }
-
 }

@@ -239,18 +239,15 @@
                     <div class="stat-value" th:text="${github.public_repos}">0</div>
                     <div class="stat-label">Public Repos</div>
                 </div>
-                <div class="stat-tile">
-                    <div class="stat-value" th:text="${github.followers}">0</div>
-                    <div class="stat-label">Followers</div>
-                </div>
-                <div class="stat-tile">
-                    <div class="stat-value" th:text="${github.following}">0</div>
-                    <div class="stat-label">Following</div>
-                </div>
                 <div class="stat-tile" th:if="${github.created_at}">
                     <div class="stat-value" th:text="${#strings.substring(github.created_at, 0, 4)}">0000</div>
                     <div class="stat-label">Member Since</div>
                 </div>
+                <a class="stat-tile stat-tile-link" th:href="${github.html_url} + '?tab=repositories'"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="stat-value">↗</div>
+                    <div class="stat-label">View Repositories</div>
+                </a>
             </div>
         </div>
 

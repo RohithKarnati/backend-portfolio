@@ -76,15 +76,13 @@ public class TerminalContentService {
 
                 Username      %s
                 Public Repos  %d
-                Followers     %d
-                Following     %d
+                Member Since  %s
 
                 Profile:
                 %s""".formatted(
                 github.getLogin(),
                 github.getPublic_repos(),
-                github.getFollowers(),
-                github.getFollowing(),
+                github.getCreated_at() != null ? github.getCreated_at().substring(0, 4) : "N/A",
                 github.getHtml_url()
         );
     }

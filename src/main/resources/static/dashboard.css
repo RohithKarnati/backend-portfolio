@@ -708,6 +708,19 @@ a {
     margin-top: 4px;
 }
 
+.stat-tile-link {
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.stat-tile-link:hover {
+    transform: translateY(-2px);
+}
+
+.stat-tile-link .stat-value {
+    color: var(--accent);
+}
+
 /* ============================================================
    PROJECTS
    ============================================================ */

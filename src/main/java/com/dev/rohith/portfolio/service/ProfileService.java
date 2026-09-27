@@ -162,11 +162,12 @@ public class ProfileService {
                 ),
                 new ProjectEntry(
                         "Book My Show Clone",
-                        "A ticket-booking backend built around clean Low-Level Design and OOP principles.",
+                        "A ticket-booking domain model built around clean Low-Level Design and OOP principles.",
                         "Wanted to practice designing a scalable booking system with proper LLD instead of a monolithic CRUD app.",
-                        "Applied Factory, Singleton and MVC design patterns; used Spring for IoC/DI, Spring JPA and JDBC "
-                                + "against MySQL and SQL Server, and validated the API surface with Postman.",
-                        List.of("Java", "Spring Boot", "Low-Level Design", "MySQL", "SQL Server"),
+                        "Modeled the booking domain — movies, shows, seats, payments — as JPA entities with Spring Boot "
+                                + "and Spring Data JPA against MySQL, applying LLD principles to keep the entity "
+                                + "relationships clean.",
+                        List.of("Java", "Spring Boot", "Low-Level Design", "MySQL"),
                         "https://github.com/RohithKarnati/BookMyShow_Clone",
                         false
                 ),
@@ -176,7 +177,7 @@ public class ProfileService {
                         "Needed an OOP-modeled system to track vehicles, spot availability and payments without ad-hoc logic.",
                         "Modeled the domain in Java with data structures for fast spot lookup, backed by a MySQL "
                                 + "schema for vehicle records and transactions.",
-                        List.of("Java", "Spring Boot", "MySQL", "OOP"),
+                        List.of("Java", "MySQL", "OOP"),
                         "https://github.com/RohithKarnati/ParkingLot",
                         false
                 ),
@@ -186,7 +187,7 @@ public class ProfileService {
                         "Wanted a small, self-contained project to practice clean OOP game logic end-to-end.",
                         "Built the board, dice and player-turn logic in Java, exposed through a CLI, "
                                 + "with tests to catch rule-adherence bugs.",
-                        List.of("Java", "Spring Boot", "OOP"),
+                        List.of("Java", "OOP"),
                         "https://github.com/RohithKarnati/Snake-And-Ladder",
                         false
                 )

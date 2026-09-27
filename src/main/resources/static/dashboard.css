@@ -718,6 +718,24 @@ a {
     gap: 20px;
 }
 
+.subsection-header {
+    margin: 44px 0 20px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+}
+
+.subsection-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 16px 0 6px;
+}
+
+.subsection-subtitle {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13.5px;
+}
+
 .project-card {
     border: 1px solid var(--border);
     border-radius: var(--radius);

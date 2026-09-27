@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!--/* Shared project card, reused for each project category on the dashboard. */-->
+<article th:fragment="projectCard(project)" class="project-card"
+          th:classappend="${project.placeholder} ? 'is-placeholder' : ''">
+    <div class="project-head">
+        <h3 class="project-name" th:text="${project.name}">Project</h3>
+        <span th:if="${project.placeholder}" class="project-badge">PLACEHOLDER</span>
+    </div>
+
+    <p class="project-desc" th:text="${project.description}">Description</p>
+
+    <div class="project-meta">
+        <div>
+            <span class="project-meta-label">Problem</span>
+            <p th:text="${project.problem}">Problem</p>
+        </div>
+        <div>
+            <span class="project-meta-label">Approach</span>
+            <p th:text="${project.approach}">Approach</p>
+        </div>
+    </div>
+
+    <div class="stack-pills">
+        <span class="pill" th:each="tech : ${project.techStack}" th:text="${tech}">Tech</span>
+    </div>
+
+    <a th:if="${!project.placeholder}" class="project-link" th:href="${project.githubUrl}"
+       target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+    <span th:if="${project.placeholder}" class="project-link project-link-disabled">Repository link coming soon</span>
+</article>
+
+</body>
+</html>

@@ -267,34 +267,20 @@
         </div>
 
         <div class="projects-grid">
-            <article class="project-card" th:each="project : ${projects}"
-                      th:classappend="${project.placeholder} ? 'is-placeholder' : ''">
-                <div class="project-head">
-                    <h3 class="project-name" th:text="${project.name}">Project</h3>
-                    <span th:if="${project.placeholder}" class="project-badge">PLACEHOLDER</span>
-                </div>
+            <th:block th:each="project : ${projects}" th:if="${project.category == 'Featured'}">
+                <div th:replace="~{fragments/project-card :: projectCard(${project})}"></div>
+            </th:block>
+        </div>
 
-                <p class="project-desc" th:text="${project.description}">Description</p>
+        <div class="subsection-header">
+            <h3 class="subsection-title">LLD / Fundamentals</h3>
+            <p class="subsection-subtitle">Practice projects built to sharpen low-level design and OOP fundamentals — not production systems.</p>
+        </div>
 
-                <div class="project-meta">
-                    <div>
-                        <span class="project-meta-label">Problem</span>
-                        <p th:text="${project.problem}">Problem</p>
-                    </div>
-                    <div>
-                        <span class="project-meta-label">Approach</span>
-                        <p th:text="${project.approach}">Approach</p>
-                    </div>
-                </div>
-
-                <div class="stack-pills">
-                    <span class="pill" th:each="tech : ${project.techStack}" th:text="${tech}">Tech</span>
-                </div>
-
-                <a th:if="${!project.placeholder}" class="project-link" th:href="${project.githubUrl}"
-                   target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
-                <span th:if="${project.placeholder}" class="project-link project-link-disabled">Repository link coming soon</span>
-            </article>
+        <div class="projects-grid">
+            <th:block th:each="project : ${projects}" th:if="${project.category == 'LLD / Fundamentals'}">
+                <div th:replace="~{fragments/project-card :: projectCard(${project})}"></div>
+            </th:block>
         </div>
     </section>
 

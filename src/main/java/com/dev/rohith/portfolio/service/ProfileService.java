@@ -143,11 +143,15 @@ public class ProfileService {
         );
     }
 
+    public static final String PROJECT_CATEGORY_FEATURED = "Featured";
+    public static final String PROJECT_CATEGORY_FUNDAMENTALS = "LLD / Fundamentals";
+
     /** Portfolio projects, sourced from resume + this repository itself. */
     public List<ProjectEntry> getProjects() {
         return List.of(
                 new ProjectEntry(
                         "Backend Portfolio Platform",
+                        PROJECT_CATEGORY_FEATURED,
                         "The backend behind this site — a Spring Boot service that renders a "
                                 + "server-side dashboard and exposes a small REST API.",
                         "Wanted a personal site that reflects backend engineering work instead "
@@ -162,6 +166,7 @@ public class ProfileService {
                 ),
                 new ProjectEntry(
                         "Book My Show Clone",
+                        PROJECT_CATEGORY_FUNDAMENTALS,
                         "A ticket-booking domain model built around clean Low-Level Design and OOP principles.",
                         "Wanted to practice designing a scalable booking system with proper LLD instead of a monolithic CRUD app.",
                         "Modeled the booking domain — movies, shows, seats, payments — as JPA entities with Spring Boot "
@@ -173,6 +178,7 @@ public class ProfileService {
                 ),
                 new ProjectEntry(
                         "Parking Lot System",
+                        PROJECT_CATEGORY_FUNDAMENTALS,
                         "A backend service that manages parking allocation and vacant-spot search for a multi-level lot.",
                         "Needed an OOP-modeled system to track vehicles, spot availability and payments without ad-hoc logic.",
                         "Modeled the domain in Java with data structures for fast spot lookup, backed by a MySQL "
@@ -183,6 +189,7 @@ public class ProfileService {
                 ),
                 new ProjectEntry(
                         "Snake and Ladder",
+                        PROJECT_CATEGORY_FUNDAMENTALS,
                         "A command-line implementation of Snake and Ladder with full game-state management.",
                         "Wanted a small, self-contained project to practice clean OOP game logic end-to-end.",
                         "Built the board, dice and player-turn logic in Java, exposed through a CLI, "

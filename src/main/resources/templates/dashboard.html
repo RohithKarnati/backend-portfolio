@@ -27,6 +27,7 @@
         <nav id="navLinks" class="nav-links">
             <a href="#work">Work</a>
             <a href="#projects">Projects</a>
+            <a href="#notes">Notes</a>
             <a href="#tech-stack">Tech Stack</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
@@ -262,6 +263,31 @@
             <th:block th:each="project : ${projects}" th:if="${project.category == 'LLD / Fundamentals'}">
                 <div th:replace="~{fragments/project-card :: projectCard(${project})}"></div>
             </th:block>
+        </div>
+    </section>
+
+    <!-- NOTES / WRITING -->
+    <section class="section" id="notes">
+        <div class="section-header">
+            <span class="section-eyebrow">tail -f writing.log</span>
+            <h2 class="section-title">Notes</h2>
+            <p class="section-subtitle">Longer-form write-ups on backend problems I've worked through.</p>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-entry" th:each="note : ${notes}">
+                <div class="entry-status"
+                     th:classappend="${note.status == 'PRODUCTION'} ? 'status-production' : (${note.status == 'DRAFT'} ? 'status-draft' : 'status-archived')">
+                    [<span th:text="${note.status}">STATUS</span>]
+                </div>
+
+                <div class="entry-body">
+                    <div class="entry-head">
+                        <h3 class="entry-role" th:text="${note.title}">Title</h3>
+                    </div>
+                    <p class="entry-summary" th:text="${note.summary}">Summary</p>
+                </div>
+            </article>
         </div>
     </section>
 

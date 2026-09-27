@@ -2,6 +2,7 @@ package com.dev.rohith.portfolio.service;
 
 import com.dev.rohith.portfolio.dto.ExperienceEntry;
 import com.dev.rohith.portfolio.dto.GithubUser;
+import com.dev.rohith.portfolio.dto.NoteEntry;
 import com.dev.rohith.portfolio.dto.ProjectEntry;
 import com.dev.rohith.portfolio.dto.TechCategory;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,7 @@ public class ProfileService {
         response.put("github", getGithubProfile());
         response.put("experience", getExperience());
         response.put("projects", getProjects());
+        response.put("notes", getNotes());
         response.put("techStack", getTechStack());
         response.put("certifications", getCertifications());
         response.put("generatedAt", Instant.now());
@@ -197,6 +199,17 @@ public class ProfileService {
                         List.of("Java", "OOP"),
                         "https://github.com/RohithKarnati/Snake-And-Ladder",
                         false
+                )
+        );
+    }
+
+    /** Longer-form write-ups. DRAFT entries are titled but not yet written. */
+    public List<NoteEntry> getNotes() {
+        return List.of(
+                new NoteEntry(
+                        "DRAFT",
+                        "Re-engineering a blocking REST endpoint into a streaming BulkService",
+                        "Write-up coming soon."
                 )
         );
     }

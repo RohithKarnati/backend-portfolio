@@ -96,7 +96,7 @@ public class ProfileService {
                 I hold a B.E. in Electronics & Communication Engineering and I'm currently
                 a Senior Software Engineer working on Morgan Stanley's Datalink platform —
                 a microservices data-abstraction layer serving 500+ downstream users with
-                sub-150ms SLAs.""";
+                a sub-150ms SLA.""";
     }
 
     /** Employment / deployment history, sourced from resume. */
@@ -108,7 +108,7 @@ public class ProfileService {
                         "Morgan Stanley — FTC via Wissen Technology, Bengaluru",
                         "Jan 2024 — Present",
                         List.of(
-                                "Designed a multi-layered microservices architecture serving 500+ downstream users across Tokyo, London and New York with a <150ms SLA.",
+                                "Designed a multi-layered microservices architecture serving 500+ downstream users across Tokyo, London and New York with a sub-150ms SLA.",
                                 "Re-engineered a blocking REST endpoint into a streaming BulkService handling 10,000+ identifiers per request, delivering a 300%+ throughput improvement.",
                                 "Extended OAuth2 authentication from client-credentials to Authorization Code Flow, enabling ~20k+ human users to securely query calendar and trading-hours data.",
                                 "Managed 200+ production Linux hosts (160GB RAM / 16 vCPU each) supporting 1,500+ RPS, alongside end-to-end CI/CD via Docker and Jenkins across three global regions.",

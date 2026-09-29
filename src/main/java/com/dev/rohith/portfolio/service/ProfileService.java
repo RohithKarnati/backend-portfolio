@@ -80,25 +80,20 @@ public class ProfileService {
     /** Plain-text professional narrative, used by Developer Mode (about.txt / `about`). */
     public String getAboutText() {
         return """
-                I'm Rohith Kumar, a Senior Backend Engineer focused on Java, Spring Boot,
-                Microservices and DevOps automation.
+                I'm Rohith Kumar, a Senior Backend Engineer with 5+ years of experience
+                building and scaling high-performance distributed systems — designing
+                microservices that handle 1,500+ RPS and support 500+ downstream clients
+                globally, with sub-150ms latency requirements.
 
-                I started out learning to code through Scaler Academy with the goal of
-                becoming a frontend engineer — I picked up Java early on partly because I
-                mistook it for being closely related to JavaScript. While working through
-                Java and data structures & algorithms, I found I genuinely enjoyed the
-                problem solving and mathematical thinking involved, and that pulled me
-                steadily toward the backend.
-
-                Today my focus is backend systems: APIs, performance, scalability and the
-                infrastructure that keeps them running — Linux, deployment pipelines, and
-                the kind of production debugging that teaches you how systems actually
-                behave under load.
+                My focus is backend systems end-to-end: Java, Spring Boot, databases,
+                distributed systems, OAuth2, mTLS, observability and cloud-native
+                engineering, plus the Linux and deployment infrastructure that keeps
+                production systems running under load.
 
                 I hold a B.E. in Electronics & Communication Engineering and I'm currently
                 a Senior Software Engineer working on Morgan Stanley's Datalink platform —
                 a microservices data-abstraction layer serving 500+ downstream users with
-                a sub-150ms SLA.""";
+                a sub-150ms SLA, where I've shipped zero-rollback releases at scale.""";
     }
 
     /** Employment / deployment history, sourced from resume. */

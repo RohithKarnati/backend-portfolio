@@ -93,7 +93,7 @@ public class ProfileService {
                 I hold a B.E. in Electronics & Communication Engineering and I'm currently
                 a Senior Software Engineer working on Morgan Stanley's Datalink platform —
                 a microservices data-abstraction layer serving 500+ downstream users with
-                a sub-150ms SLA, where I've shipped zero-rollback releases at scale.""";
+                a sub-150ms SLA.""";
     }
 
     /** Employment / deployment history, sourced from resume. */

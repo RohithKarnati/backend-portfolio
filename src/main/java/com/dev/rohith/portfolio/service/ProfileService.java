@@ -204,7 +204,12 @@ public class ProfileService {
                 new NoteEntry(
                         "DRAFT",
                         "Re-engineering a blocking REST endpoint into a streaming BulkService",
-                        "Write-up coming soon."
+                        "A synchronous, one-identifier-per-request endpoint became a throughput "
+                                + "ceiling as downstream demand grew. This walks through re-architecting "
+                                + "it into a streaming BulkService that batches 10,000+ identifiers per "
+                                + "request, the backpressure and memory tradeoffs that came with it, and "
+                                + "how it delivered a 300%+ throughput improvement without breaking "
+                                + "existing consumers. Full write-up coming soon."
                 )
         );
     }
